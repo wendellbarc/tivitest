@@ -17,6 +17,8 @@ jobs:
   Test:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
+    env:
+      working-directory: /home/ubuntu
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -28,6 +30,7 @@ jobs:
         run: echo Hello, world!
         
       - name: Test Build 
+        working-directory: ${{ env.working-directory }}
         run: pwd && ls && docker build -t nginx .
 
   Build:
@@ -36,7 +39,9 @@ jobs:
     
     steps:
       - uses: actions/checkout@v2 
+      
       - name: Deploy test version on EC2
+        working-directory: ${{ env.working-directory }}
         env:
           PRIVATE_KEY: ${{ secrets.AWS_PRIVATE_SECRET  }}
           HOSTNAME : ${{ secrets.HOSTNAME  }}
