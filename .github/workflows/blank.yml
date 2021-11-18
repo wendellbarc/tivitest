@@ -28,7 +28,7 @@ jobs:
         run: echo Hello, world!
         
       - name: Build
-        run: docker build -t nginx 
+        run: docker build -t nginx .
 
   Deploy:
     needs: build
