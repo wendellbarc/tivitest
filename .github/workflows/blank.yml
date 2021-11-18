@@ -49,6 +49,6 @@ jobs:
             #Now we have got the access of EC2 and we will start the deploy .
             pwd
             ls
-            docker image ls
-            docker exec -dit -p 80:80 nginx:latest
+            sudo docker image ls
+            sudo docker exec -dit -p 80:80 nginx:latest
           '
