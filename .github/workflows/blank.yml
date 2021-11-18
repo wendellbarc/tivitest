@@ -28,7 +28,7 @@ jobs:
         run: echo Hello, world!
         
       - name: Test Build 
-        run: docker build -t nginx .
+        run: pwd && ls && docker build -t nginx .
 
   Build:
     needs: Test
